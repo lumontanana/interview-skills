@@ -1,6 +1,6 @@
 # 🎯 interview-skills
 
-**Un pack de skills para [Claude Code](https://claude.com/claude-code) pensado para entrenar entrevistas técnicas de backend en directo.**
+**Un pack de skills para agentes de código (Claude Code, Codex y más) pensado para entrenar entrevistas técnicas de backend en directo.**
 
 En vez de darte la solución, estas skills te hacen pasar por el mismo proceso que un entrevistador senior espera: proponer una idea antes de programar, defenderla, justificar los trade-offs, y explicar en voz alta lo que haces y por qué.
 
@@ -17,58 +17,51 @@ En vez de darte la solución, estas skills te hacen pasar por el mismo proceso q
 
 > 💡 Flujo típico: `mapea-preguntas` para saber por dónde empezar → `corrige-teoria` / `completa-snippet` / `optimiza-codigo` según lo que toque en cada punto.
 
-Cada `*.skill` es un paquete `.zip` con el formato estándar de Claude Code: `<nombre>/SKILL.md`.
-
 ---
 
 ## 🚀 Instalación
 
-Clona este repo y ejecuta el instalador. Puedes instalar las skills **en un proyecto concreto** o **globalmente** (disponibles en todos tus proyectos).
+Un único comando, usando la CLI abierta [`skills`](https://skills.sh):
 
 ```bash
-git clone https://github.com/lumontanana/interview-skills.git
-cd interview-skills
+npx skills@latest add lumontanana/interview-skills
 ```
 
-### Windows · PowerShell
-
-```powershell
-# Instalar en el directorio actual
-.\install.ps1
-
-# Instalar en otro proyecto
-.\install.ps1 C:\ruta\a\mi-proyecto
-
-# Instalar globalmente (~\.claude\skills, para todos tus proyectos)
-.\install.ps1 -Global
-```
-
-### macOS / Linux / Git Bash
+Te deja elegir qué skills instalar y en qué agente(s) (Claude Code, Codex, Cursor...). Para instalarlas todas sin preguntas:
 
 ```bash
-# Instalar en el directorio actual
-./install.sh
-
-# Instalar en otro proyecto
-./install.sh ../mi-proyecto
-
-# Instalar globalmente (~/.claude/skills, para todos tus proyectos)
-./install.sh --global
+npx skills@latest add lumontanana/interview-skills --skill '*' -y
 ```
 
-Ambos scripts descomprimen cada `*.skill` en `<proyecto>/.claude/skills/<nombre>/`, que es donde Claude Code busca las skills de un proyecto. No necesitas `unzip` en Windows (usa `System.IO.Compression`); en Linux/macOS usa `unzip` o, si no está disponible, `python3` como fallback.
+O una en concreto:
+
+```bash
+npx skills@latest add lumontanana/interview-skills --skill mapea-preguntas
+```
+
+Por defecto se instalan en el proyecto actual (`.claude/skills/`, `.codex/skills/`, etc., según el agente). Para tenerlas disponibles en todos tus proyectos, añade `-g`:
+
+```bash
+npx skills@latest add lumontanana/interview-skills -g
+```
+
+### Actualizar o quitar
+
+```bash
+npx skills update      # trae las últimas versiones de las skills instaladas
+npx skills list         # ver qué tienes instalado
+npx skills remove       # desinstalar
+```
 
 ---
 
 ## ✅ Comprobar que se instalaron
 
-Dentro del proyecto donde las instalaste:
-
 ```bash
-ls .claude/skills
+npx skills list
 ```
 
-Deberías ver las cuatro carpetas (`mapea-preguntas`, `corrige-teoria`, `completa-snippet`, `optimiza-codigo`), cada una con su `SKILL.md`. Claude Code las detecta automáticamente en la siguiente sesión — no hace falta reiniciar nada más que abrir el proyecto.
+Deberías ver las skills que hayas elegido, con el agente y el ámbito (proyecto o global) donde quedaron instaladas. Claude Code (y el resto de agentes soportados) las detecta automáticamente en la siguiente sesión.
 
 ---
 
@@ -76,11 +69,11 @@ Deberías ver las cuatro carpetas (`mapea-preguntas`, `corrige-teoria`, `complet
 
 ```
 interview-skills/
-├── completa-snippet.skill
-├── corrige-teoria.skill
-├── mapea-preguntas.skill
-├── optimiza-codigo.skill
-├── install.ps1     # instalador para PowerShell / Windows
-├── install.sh       # instalador para bash / macOS / Linux
-└── README.md
+└── skills/
+    ├── mapea-preguntas/SKILL.md
+    ├── corrige-teoria/SKILL.md
+    ├── completa-snippet/SKILL.md
+    └── optimiza-codigo/SKILL.md
 ```
+
+Cada `SKILL.md` sigue el formato estándar de skills para agentes: frontmatter con `name` y `description`, y el cuerpo con las instrucciones que sigue el agente.
