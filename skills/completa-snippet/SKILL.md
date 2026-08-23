@@ -1,56 +1,58 @@
 ---
 name: completa-snippet
-description: 'Ayuda a completar snippets de código incompletos o a resolver un objetivo funcional siguiendo el ciclo idea → feedback sobre la idea → implementación → explicación en voz alta, tal como se evalúa en una entrevista técnica de backend en directo. Úsalo cuando el usuario pegue o tenga abierto un snippet a medias y pida ayuda para terminarlo, o diga cosas como "ayúdame a completar esto", "dame un ejercicio para practicar live coding", "quiero practicar cómo resolvería esto en una entrevista" o "termina esta función pero hazme trabajar por ella". No des la solución completa de golpe, este skill existe precisamente para no hacer eso — si el usuario solo quiere que le resuelvas el código directamente, este no es el flujo adecuado y debes decírselo.'
+description: 'Ayuda a completar snippets de código incompletos o a resolver un objetivo funcional mostrando las opciones de implementación más óptimas (negocio e implementación) antes de escribirlo, para que el usuario elija con criterio en vez de recibir una única respuesta sin contexto. Úsalo cuando el usuario pegue o tenga abierto un snippet a medias y pida ayuda para terminarlo, o diga cosas como "ayúdame a completar esto", "cómo terminarías tú esta función", "dame las opciones para implementar esto y cuál es la más óptima", "quiero ver los enfoques posibles antes de decidir" o "termina esta función, pero explícame por qué la harías así". El skill escribe la implementación elegida y explica el razonamiento; no es un examen ni un simulacro de entrevista.'
 ---
 
 # Completa snippet
 
-El objetivo de este skill no es que el código quede terminado — para eso no hace falta practicar. El
-objetivo es entrenar el ciclo completo que se evalúa en una entrevista de live coding: proponer una idea
-antes de escribir nada, defenderla, implementarla, y explicar en voz alta lo que se hizo y por qué. Dar la
-solución de inmediato le quita a la usuaria exactamente la parte que necesita entrenar. Sigue las fases en
-orden y no te saltes ninguna aunque parezca más lento.
+El objetivo de este skill es que el usuario se lleve la implementación más óptima del hueco, TODO u
+objetivo que tiene delante, entendiendo por qué es la mejor opción frente a las alternativas razonables.
+No es un examen: no le pidas que proponga su propia idea desde cero ni que la defienda antes de dejarla
+avanzar. Sigue las fases en orden.
 
 ## Fase 0 — Entiende el punto de partida
 
 Si hay un snippet incompleto, un archivo abierto en el workspace, o un objetivo descrito en texto, léelo
 primero. Confirma en una frase qué falta por hacer (el hueco, el TODO, o el comportamiento pedido). Si el
-objetivo es ambiguo, pregunta lo mínimo necesario para acotarlo — igual que un entrevistador aclararía el
-enunciado antes de dejarla programar.
+objetivo es ambiguo, pregunta lo mínimo necesario para acotarlo.
 
-## Fase 1 — Pide la idea antes que el código
+## Fase 1 — Presenta las opciones de implementación
 
-Pregúntale cómo lo abordaría, en alto nivel, antes de que escriba una sola línea. No aceptes "voy a hacer un
-bucle que..." como idea completa si no dice también el enfoque de fondo (¿qué estructura de datos?, ¿qué
-complejidad?, ¿qué casos límite hay que cubrir?).
+Antes de escribir nada, identifica las formas viables de resolver el hueco u objetivo — normalmente 2-3.
+Para cada opción, una frase de qué hace y su trade-off real de negocio/implementación (rendimiento,
+legibilidad, complejidad, encaje con el objetivo real — no solo ingenio algorítmico desconectado del
+contexto).
 
-Da feedback sobre esa idea *antes* de dejarla implementar:
-- ¿Es razonable para el problema, o hay un enfoque más idiomático en el lenguaje/framework que está usando?
-- ¿Qué edge cases se le están escapando? (nulls, colecciones vacías, concurrencia, límites numéricos,
-  errores de red o de base de datos, según aplique)
-- Si la idea tiene un problema serio, dilo ahora — no dejes que construya sobre una base que vas a tumbar
-  después, eso no es como funciona una entrevista real (ahí normalmente el entrevistador interviene pronto).
+Si de verdad solo hay una forma razonable (el caso es trivial o no hay alternativa sensata), no inventes
+alternativas artificiales solo por rellenar la fase — dilo, pasa directamente a la fase 3, y explica en la
+fase 4 por qué es la única opción sensata.
 
-Solo cuando la idea sea razonable (no perfecta, razonable) pasa a la fase 2.
+Si hay una restricción de contexto que cambiaría cuál opción es la más óptima (tamaño esperado del dataset,
+concurrencia, si el código es desechable o va a producción, límites de tiempo/memoria), pregúntala antes o
+junto con las opciones — solo cuando de verdad cambie la elección, no por rutina.
 
-## Fase 2 — Que implemente ella
+## Fase 2 — Pregunta cuál prefiere
 
-No escribas tú la implementación. Déjala escribir el código, con el andamiaje de la idea ya acordada. Si se
-atasca, dale una pista proporcional al atasco (una pregunta que la redirija) antes que la respuesta directa
-— igual que haría un entrevistador que quiere ver cómo razona, no solo si acierta.
+Si planteaste varias opciones, pregúntale cuál prefiere. Si no tiene una preferencia clara, o te pide
+directamente que decidas tú, recomienda la que consideres más óptima y di en una frase por qué. Si solo
+había una opción razonable, salta esta fase.
 
-## Fase 3 — Que lo explique en voz alta
+## Fase 3 — Implementa la opción elegida
 
-Cuando termine, pídele que explique lo que implementó y por qué, como si se lo estuviera contando a quien la
-entrevista. Evalúa esa explicación, no solo el código:
+Escribe tú el código de la opción elegida, completo y correcto. No dejes el hueco a medias ni le pidas que
+lo termine ella — el objetivo de este skill es que tenga una solución que estudiar, no que la fuerces a
+escribirla bajo presión.
 
-- **Claridad:** ¿un entrevistador que no ha visto el código la seguiría sin perderse?
-- **Justificación de decisiones:** ¿explica *por qué* eligió ese enfoque, o solo describe lo que hace el
-  código línea a línea?
-- **Edge cases:** ¿menciona cómo los cubrió, o hay que preguntárselo?
+## Fase 4 — Explica el razonamiento
+
+Explica por qué esta opción es la más óptima frente a las descartadas: qué se ganó, qué se sacrificó, y cómo
+esas decisiones se reflejan en el código real que acabas de escribir (ancla la explicación a partes
+concretas del código, no a generalidades). Menciona los edge cases relevantes (nulls, colecciones vacías,
+concurrencia, límites numéricos, errores de red o de base de datos, según aplique) y cómo la implementación
+los cubre.
 
 ## Formato de respuesta
 
-Sé breve en cada fase — esto se practica varias veces seguidas, no es una única sesión larga. Al cerrar la
-fase 3, da un veredicto corto: qué parte del ciclo (idea, implementación, explicación) fue la más floja, para
-que sepa en qué enfocarse en la siguiente ronda.
+Sé breve en las fases 0 a 3. En la fase 4, prioriza cubrir el razonamiento y los edge cases sobre la
+brevedad. Cierra con un resumen de una frase: qué se implementó y en qué se diferenciaba de las opciones
+descartadas. No hay veredicto sobre el desempeño del usuario — esto no es una evaluación.

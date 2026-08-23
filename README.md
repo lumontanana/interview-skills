@@ -2,7 +2,7 @@
 
 **Un pack de skills para agentes de código (Claude Code, Codex y más) pensado para entrenar entrevistas técnicas de backend en directo.**
 
-En vez de darte la solución, estas skills te hacen pasar por el mismo proceso que un entrevistador senior espera: proponer una idea antes de programar, defenderla, justificar los trade-offs, y explicar en voz alta lo que haces y por qué.
+`mapea-preguntas` es el punto de entrada: recorre tu proyecto y te dice qué repasar y con qué skill. `corrige-teoria` te hace pasar por el mismo proceso que un entrevistador senior espera. `completa-snippet` y `optimiza-codigo` van al grano: te muestran las opciones u optimizaciones más óptimas de negocio/implementación, con sus trade-offs, para que aprendas a elegir con criterio antes del día real.
 
 ---
 
@@ -12,8 +12,8 @@ En vez de darte la solución, estas skills te hacen pasar por el mismo proceso q
 |---|---|---|
 | 🗺️ **`mapea-preguntas`** | *"analiza este proyecto y dime qué preguntas hay"* | Rastrea un proyecto entero (TODOs, ejercicios, ficheros de teoría) y genera un mapa de qué hay que repasar y con qué skill. Es el punto de entrada antes de una sesión. |
 | 🧠 **`corrige-teoria`** | *"te explico cómo funciona un HashMap..."* | Corrige explicaciones teóricas (estructuras de datos, JVM, Spring, BBDD, concurrencia...) con el mismo rigor que un entrevistador senior evaluándote en directo. |
-| ✍️ **`completa-snippet`** | *"ayúdame a completar esto"* | Ciclo completo de live coding: idea → feedback sobre la idea → implementación → explicación en voz alta. No suelta la solución de golpe. |
-| ⚡ **`optimiza-codigo`** | *"revisa este código como si fueras un entrevistador"* | Code review socrática sobre código que ya funciona: rendimiento, legibilidad, complejidad, manejo de errores. Reta a justificar las decisiones antes de aceptar la mejora. |
+| ✍️ **`completa-snippet`** | *"ayúdame a completar esto"* | Muestra las opciones de implementación más óptimas (negocio + implementación) para el hueco o TODO, te deja elegir, y escribe y explica la que elijas. |
+| ⚡ **`optimiza-codigo`** | *"revisa este código y dime qué mejorarías"* | Code review sobre código que ya funciona: rendimiento, legibilidad, complejidad, manejo de errores. Da directamente las mejoras más óptimas con su trade-off. |
 
 > 💡 Flujo típico: `mapea-preguntas` para saber por dónde empezar → `corrige-teoria` / `completa-snippet` / `optimiza-codigo` según lo que toque en cada punto.
 

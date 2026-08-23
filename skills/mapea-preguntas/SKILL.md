@@ -42,7 +42,7 @@ la usuaria qué skill llamar después:
 - **Teoría** (→ `corrige-teoria`): pide explicar cómo funciona algo, no escribir código nuevo. Ejemplo: un
   comentario que pregunta "¿por qué es más rápido HashMap que TreeMap aquí?".
 - **Snippet a completar** (→ `completa-snippet`): hay código incompleto, un TODO de implementación, o un
-  método vacío que hay que rellenar.
+  método vacío o a medias.
 - **Código a optimizar** (→ `optimiza-codigo`): el código ya funciona (compila, tiene tests que pasan) pero
   hay una nota o convención que sugiere que se puede mejorar, o simplemente es candidato porque está
   terminado y sin marcar como pendiente.
