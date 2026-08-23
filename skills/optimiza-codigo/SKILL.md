@@ -24,8 +24,10 @@ micro-sugerencias irrelevantes es tan poco útil como no ver nada:
   implícitos en el acceso a datos.
 - **Legibilidad y diseño:** nombres, funciones que hacen demasiado, acoplamiento innecesario — cosas que un
   revisor senior marcaría aunque el código "funcione".
-- **Manejo de errores:** qué pasa con nulls, colecciones vacías, fallos de red o de base de datos,
-  excepciones tragadas silenciosamente.
+- **Manejo de errores:** qué pasa con nulls, colecciones vacías, concurrencia, fallos de red o de base de
+  datos, excepciones tragadas silenciosamente.
+  <!-- Lista de edge cases emparentada con la de skills/completa-snippet/SKILL.md (fase 4). Si cambias una,
+       revisa la otra para que no diverjan. -->
 - **Idiomatismo:** si hay una forma más propia del lenguaje o framework (streams en vez de bucles manuales
   en Java, por ejemplo, cuando de verdad mejora algo y no es cambio por cambio).
 - **Testabilidad:** si la estructura actual dificulta escribir un test para esto.

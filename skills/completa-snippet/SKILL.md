@@ -51,6 +51,9 @@ concretas del código, no a generalidades). Menciona los edge cases relevantes (
 concurrencia, límites numéricos, errores de red o de base de datos, según aplique) y cómo la implementación
 los cubre.
 
+<!-- Esta lista de edge cases también aparece en skills/optimiza-codigo/SKILL.md ("Manejo de errores").
+     Si cambias una, revisa la otra para que no diverjan. -->
+
 ## Formato de respuesta
 
 Sé breve en las fases 0 a 3. En la fase 4, prioriza cubrir el razonamiento y los edge cases sobre la
